@@ -12,7 +12,7 @@ function Main() {
     icon: null,
     degrees: '',
     feelsLike: '',
-    weather: '',
+    weatherName: '',
     sunrise: '',
     sunset: '',
     });
@@ -33,6 +33,7 @@ function Main() {
           cityName={weather.cityName}
           degrees={weather.degrees}
           feelsLike={weather.feelsLike}
+          weatherName={weather.weatherName}
           sunrise={weather.sunrise}
           sunset={weather.sunset}/>
           

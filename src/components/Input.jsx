@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import searchImg from '../images/search.svg';
-//import WeatherContext from "../context";
+import WeatherContext from "../context";
 import { responseWeather } from '../api';
-//import {useContext} from 'react'
+import {useContext} from 'react'
 
 function Input() {
   const [value, setValue] = useState('');
-  //const {weather, setWeather} = useContext(WeatherContext)
+  const {weather, setWeather} = useContext(WeatherContext);
+  const [forecast, setForecast] = useState([{}]);
   console.log(value)
 
-  function handleSubmit(e) {
+  function HandleSubmit(e) {
     e.preventDefault();
-    responseWeather(value)
+  const result = responseWeather(value)
+    result.then(data => setWeather({...data}))
+    console.log(weather.weatherName)
   }
 
   return (
@@ -21,11 +24,11 @@ function Input() {
         type="text"
         placeholder="Enter a town..."
         onChange={(e) => setValue(e.target.value)}
-        onSubmit={handleSubmit} />
+        onSubmit={HandleSubmit} />
       <button
         type="submit" className="button_search"
         style={{ backgroundImage: `url(${searchImg})` }}
-        onClick={handleSubmit}></button>
+        onClick={HandleSubmit}></button>
     </form>
   )
 }
