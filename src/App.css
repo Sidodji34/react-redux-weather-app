@@ -8,6 +8,10 @@ html {
 body {
     background-color:  #989898;
 }
+
+ul {
+    list-style-type: none
+}
 .body_weather {
     position: absolute;
     width: 621px;
@@ -202,7 +206,6 @@ input:focus {
     line-height: 28px;
     top: 20px;
     left: 20px;
-    height: 30px;
     width: 100px;
 }
 .info_town {
@@ -214,7 +217,6 @@ input:focus {
     line-height: 40px;
     top: 50px;
     left: -20px;
-    list-style-type: none
 }
 .forecast_box {
     display:flex;
@@ -229,25 +231,32 @@ input:focus {
     box-sizing: border-box;
     margin: 25px auto;
     line-height: 25px;
-    padding: 5px 0px 0px 25px;
 }
 .icon__weather {
-    position: relative;
     background-repeat: no-repeat;
     width: 45px;
     height: 45px;
-    right: 30px;
-    bottom: -60px;
 }
-.info__weather {
-    position: relative;
-    top: -10px;
-    right: -30px;
+.info__forecast_left {
+    padding: 0px;
+    margin: 5px;
+}
+.info__forecast_right {
+    margin: 5px;
+}
+.info__date {
+    margin-top: -5px;
+    margin-bottom: 35px;
 }
 .info__time {
-    position: relative;
-    right: -35px;
+    margin-top: -5px;
+    margin-bottom: 35px;
 }
+.info__weather {
+    margin-bottom: -13px;
+    margin-left: 4px;
+}
+
 #now {
     display: inline-block;
     border-right: 1px solid #000000;
