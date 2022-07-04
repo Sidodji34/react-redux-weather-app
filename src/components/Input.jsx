@@ -9,12 +9,14 @@ function Input() {
   const { weather, setWeather } = useContext(WeatherContext);
   const { forecast, setForecast } = useContext(ForecastContext);
 
-
   function HandleSubmit(e) {
     e.preventDefault();
-    const resultWeather = responseWeather(value)
-    resultWeather.then(data => setWeather(data))
-    resultWeather.then(setForecast(weather.forecast))
+    responseWeather(value)
+    .then(result => {
+      setWeather(result[0])
+      setForecast(result[1])
+    });
+    setValue('');
   }
 
   return (
@@ -23,6 +25,7 @@ function Input() {
         className='search_town'
         type="text"
         placeholder="Enter a town..."
+        value={value}
         onChange={(e) => setValue(e.target.value)}
         onSubmit={HandleSubmit} />
       <button

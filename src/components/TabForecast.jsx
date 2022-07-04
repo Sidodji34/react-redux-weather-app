@@ -1,30 +1,25 @@
 function TabForecast(props) {
-  console.log(props)
-  if (!props.forecast) {
-    return
-  } else {
   const forecast = props.forecast;
- const forecastItems = forecast.map((items, index) => {
+  const forecastItems = forecast.map((items, index) => {
     return (
-    <HourlyForecast
-      key={index}
-      date={items.date}
-      degrees={items.degrees}
-      feelsLike={items.feelsLike}
-      time={items.time}
-      weatherName={items.weatherName}
-      icon={items.icon} />
-  )
-})
+      <HourlyForecast
+        key={index}
+        date={items.date}
+        degrees={items.degrees}
+        feelsLike={items.feelsLike}
+        time={items.time}
+        weatherName={items.weatherName}
+        icon={items.icon} />
+    )
+  })
   return (
     <div id="tab_forecast" className="tabs_block">
       <div className="name_town_forecast">{props.cityName}</div>
       <div className="forecast_list">
-             {forecastItems}
+        {forecastItems}
       </div>
     </div>
   )
-  }
 }
 
 function HourlyForecast(props) {

@@ -1,4 +1,4 @@
-function ListTown() {
+function ListTown(props) {
     return (
         <div className="right_bar">
         <div className="add_locations">Added Locations:</div>

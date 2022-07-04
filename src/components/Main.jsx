@@ -8,15 +8,7 @@ import TabForecast from "./TabForecast";
 import TabNow from "./TabNow";
 
 function Main() {
-  const [weather, setWeather] = useState({
-    cityName: '',
-    icon: null,
-    degrees: '',
-    feelsLike: '',
-    weatherName: '',
-    sunrise: '',
-    sunset: '',
-  })
+  const [weather, setWeather] = useState({})
   const [forecast, setForecast] = useState([]);
   return (
     <div className="content">
