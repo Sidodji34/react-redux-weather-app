@@ -1,16 +1,18 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import searchImg from '../images/search.svg';
-import WeatherContext from "../context";
-import ForecastContext from '../forecastContext';
+import WeatherContext from '../context/ContextWeather';
+import ForecastContext from '../context/ForecastContext';
 import { responseWeather } from '../api';
+import { saveLastSession } from '../storage';
 
 function Input() {
   const [value, setValue] = useState('');
-  const { weather, setWeather } = useContext(WeatherContext);
-  const { forecast, setForecast } = useContext(ForecastContext);
+  const { setWeather } = useContext(WeatherContext);
+  const { setForecast } = useContext(ForecastContext);
 
   function HandleSubmit(e) {
     e.preventDefault();
+    saveLastSession(value);
     responseWeather(value)
     .then(result => {
       setWeather(result[0])

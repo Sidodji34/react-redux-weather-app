@@ -102,6 +102,7 @@ input:focus {
 .name__town {
     border: 1px solid #FFFFFF;
     background-color: #FFFFFF;
+    font-size: 22px;
 }
 .btn__delite {
     position: relative;
@@ -251,7 +252,7 @@ input:focus {
 .info__time {
     margin-top: -5px;
     margin-bottom: 35px;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 .info__weather {
     margin-bottom: -13px;
