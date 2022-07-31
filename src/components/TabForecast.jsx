@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import ForecastContext from "../context/ForecastContext";
+
 function TabForecast(props) {
-  const forecast = props.forecast;
+  const { forecast } = useContext(ForecastContext);
   const forecastItems = forecast.map((items, index) => {
     return (
       <HourlyForecast

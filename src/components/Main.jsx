@@ -26,7 +26,7 @@ function Main() {
 
   useEffect(() => {
     const list = JSON.parse(getList());
-    setList(list)
+    setList(list);
   }, [])
 
   return (
@@ -35,30 +35,12 @@ function Main() {
         <ForecastContext.Provider value={{ forecast, setForecast }}>
           <ListTownsContext.Provider value={{ listTowns, setList }}>
             <Input />
-            <ListTown
-              favoriteTown={listTowns}
-              value={{ listTowns, setList, setForecast, setWeather }} />
+            <ListTown />
             <div className="left_bar">
               <div className="tabs_body">
-
-                <TabNow
-                  value={{ setWeather, setList }}
-                  cityName={weather.cityName}
-                  icon={weather.icon}
-                  degrees={weather.degrees} />
-
-                <TabDetails
-                  cityName={weather.cityName}
-                  degrees={weather.degrees}
-                  feelsLike={weather.feelsLike}
-                  weatherName={weather.weatherName}
-                  sunrise={weather.sunrise}
-                  sunset={weather.sunset} />
-
-                <TabForecast
-                  cityName={weather.cityName}
-                  forecast={forecast} />
-
+                <TabNow />
+                <TabDetails />
+                <TabForecast cityName={weather.cityName} />
               </div>
             </div>
           </ListTownsContext.Provider>
