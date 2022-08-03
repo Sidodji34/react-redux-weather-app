@@ -1,12 +1,12 @@
 import likeImg from '../images/like.svg'
-import { useContext } from 'react';
-import ListTownsContext from '../context/ContextListTowns';
-import WeatherContext from '../context/ContextWeather';
+import { useDispatch, useSelector } from 'react-redux';
 import { saveList } from '../storage';
+import { addTown, removeTown } from '../store/actions/listTownsActions';
 
 function TabNow() {
-  const { setList } = useContext(ListTownsContext);
-  const { weather } = useContext(WeatherContext);
+  const dispatch = useDispatch();
+  const weather = useSelector(state => state.weather)
+  
   let iconWeather = weather.icon;
 
   if (iconWeather) {
@@ -17,12 +17,7 @@ function TabNow() {
 
   function saveTown() {
     const town = weather.cityName;
-    setList(list => {
-      const newList = new Set(list);
-      newList.add(town)
-      saveList(newList);
-      return newList;
-     });
+    dispatch(addTown(town))
   }
   
   return (

@@ -1,9 +1,8 @@
-import { useContext } from 'react';
-import WeatherContext from '../context/ContextWeather';
+import { useSelector } from 'react-redux';
 
 function TabDetails() {
-  const { weather } = useContext(WeatherContext);
-  
+  const weather = useSelector(state => state.weather);
+
   return (
     <div id="tab_details" className="tabs_block">
       <div className="name_town_details">{weather.cityName}</div>

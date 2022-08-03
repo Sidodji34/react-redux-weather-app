@@ -1,25 +1,27 @@
-import { useContext } from "react";
-import ForecastContext from "../context/ForecastContext";
+import { useSelector } from 'react-redux';
 
-function TabForecast(props) {
-  const { forecast } = useContext(ForecastContext);
-  const forecastItems = forecast.map((items, index) => {
-    return (
-      <HourlyForecast
-        key={index}
-        date={items.date}
-        degrees={items.degrees}
-        feelsLike={items.feelsLike}
-        time={items.time}
-        weatherName={items.weatherName}
-        icon={items.icon} />
-    )
-  })
+function TabForecast() {
+  const cityName = useSelector(state => state.weather.cityName);
+  const forecast = useSelector(state => state.weather.forecast);
+
   return (
     <div id="tab_forecast" className="tabs_block">
-      <div className="name_town_forecast">{props.cityName}</div>
+      <div className="name_town_forecast">{cityName}</div>
       <div className="forecast_list">
-        {forecastItems}
+        { forecast ? forecast.map((items, index) => {
+            return (
+              <HourlyForecast
+                key={index}
+                date={items.date}
+                degrees={items.degrees}
+                feelsLike={items.feelsLike}
+                time={items.time}
+                weatherName={items.weatherName}
+                icon={items.icon} />
+            )
+          })
+          : <div></div>
+        }
       </div>
     </div>
   )

@@ -1,39 +1,41 @@
-import { useState, useContext } from 'react';
 import searchImg from '../images/search.svg';
-import WeatherContext from '../context/ContextWeather';
-import ForecastContext from '../context/ForecastContext';
 import { responseWeather } from '../api';
 import { saveLastSession } from '../storage';
+import { useDispatch, useSelector } from 'react-redux';
+import { inputAction, clearInputAction } from '../store/actions/inputActions';
+import { addWeatherInfo, addForecastInfo } from '../store/actions/weatherActions';
 
 function Input() {
-  const [value, setValue] = useState('');
-  const { setWeather } = useContext(WeatherContext);
-  const { setForecast } = useContext(ForecastContext);
+  const dispatch = useDispatch();
+  const value = useSelector(state => state.input.value)
 
-  function HandleSubmit(e) {
+  function changeValue(e) {
+    dispatch(inputAction(e.target.value))
+  }
+
+  function handleSubmit(e) {
     e.preventDefault();
-    saveLastSession(value);
     responseWeather(value)
-    .then(result => {
-      setWeather(result[0])
-      setForecast(result[1])
-    });
-    setValue('');
+      .then(result => {
+        dispatch(addWeatherInfo(result[0]))
+        dispatch(addForecastInfo(result[1]))
+      });
+    dispatch(clearInputAction(value))
   }
 
   return (
-    <form className="input" action="#tab_now">
+    <form className="input" action="#tab_now" onSubmit={handleSubmit}>
       <input
         className='search_town'
         type="text"
         placeholder="Enter a town..."
         value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onSubmit={HandleSubmit} />
+        onChange={changeValue}
+      />
       <button
         type="submit" className="button_search"
         style={{ backgroundImage: `url(${searchImg})` }}
-        onClick={HandleSubmit}></button>
+        onClick={handleSubmit}></button>
     </form>
   )
 }

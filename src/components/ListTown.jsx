@@ -1,47 +1,31 @@
-import { useContext } from 'react';
 import { responseWeather } from '../api';
-import ListTownsContext from '../context/ContextListTowns';
-import WeatherContext from '../context/ContextWeather';
-import ForecastContext from '../context/ForecastContext';
 import { saveList } from '../storage';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTowns, removeTown } from '../store/actions/listTownsActions';
+import { addWeatherInfo, addForecastInfo } from '../store/actions/weatherActions';
 
 function ListTown() {
-  const { listTowns, setList } = useContext(ListTownsContext);
-  const { setWeather } = useContext(WeatherContext);
-  const { setForecast } = useContext(ForecastContext);
+  const dispatch = useDispatch();
+  const listTowns = useSelector(state => state.listTowns.listTowns)
 
-  const towns = Array.from(listTowns).reverse();
-  const listItems = towns.map((item, index) => {
-    return (
-      <FormFavoriteTown
-        key={`${item + index}`}
-        favoriteTown={item} />
-    )
-  })
-
-  function DeliteTown(town) {
-     setList(list => {
-      const newList = new Set(list);
-      newList.delete(town)
-      saveList(newList);
-      return newList;
-     });
+  function deliteTown(town) {
+    dispatch(removeTown(town))
   }
 
-  function HandleSearch(town) {
+  function handleSearch(town) {
     responseWeather(town)
-    .then(result => {
-      setWeather(result[0])
-      setForecast(result[1])
-    });
+      .then(result => {
+        dispatch(addWeatherInfo(result[0]))
+        dispatch(addForecastInfo(result[1]))
+      });
   }
 
   function FormFavoriteTown(props) {
     return (
       <li className="town_in_list">
         <div>
-          <button className="name__town" onClick={() => HandleSearch(props.favoriteTown)}>{props.favoriteTown}</button>
-          <button className="btn__delite" onClick={() => DeliteTown(props.favoriteTown)}>x</button>
+          <button className="name__town" onClick={() => handleSearch(props.favoriteTown)}>{props.favoriteTown}</button>
+          <button className="btn__delite" onClick={() => deliteTown(props.favoriteTown)}>x</button>
         </div>
       </li>
     )
@@ -52,7 +36,15 @@ function ListTown() {
       <div className="add_locations">Added Locations:</div>
       <div className="locations_list">
         <ul className="list">
-          {listItems}
+          {Array.isArray(listTowns) ? listTowns.map((item, index) => {
+            return (
+              <FormFavoriteTown
+                key={`${item + index}`}
+                favoriteTown={item} />
+            )
+          }).reverse()
+            : <li></li>
+          }
         </ul>
       </div>
     </div>
