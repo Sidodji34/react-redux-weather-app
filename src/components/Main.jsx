@@ -1,27 +1,10 @@
-import { useEffect } from "react";
 import Input from "./Input";
 import ListTown from "./ListTown";
 import TabDetails from "./TabDetails";
 import TabForecast from "./TabForecast";
 import TabNow from "./TabNow";
-import { responseWeather } from "../api";
-import { getLastSession, getList } from "../storage";
 
 function Main() {
-  // useEffect(() => {
-  //   const town = getLastSession();
-  //   responseWeather(town)
-  //   .then(result => {
-  //     setWeather(result[0])
-  //     setForecast(result[1])
-  //   });
-  // }, [])
-
-  // useEffect(() => {
-  //   const list = JSON.parse(getList());
-  //   setList(list);
-  // }, [])
-
   return (
   <div className="body_weather">
     <div className="content">

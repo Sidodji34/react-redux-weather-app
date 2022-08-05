@@ -1,6 +1,5 @@
 import searchImg from '../images/search.svg';
 import { responseWeather } from '../api';
-import { saveLastSession } from '../storage';
 import { useDispatch, useSelector } from 'react-redux';
 import { inputAction, clearInputAction } from '../store/actions/inputActions';
 import { addWeatherInfo, addForecastInfo } from '../store/actions/weatherActions';

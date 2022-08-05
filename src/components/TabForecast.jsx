@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 function TabForecast() {
   const cityName = useSelector(state => state.weather.cityName);
   const forecast = useSelector(state => state.weather.forecast);
-
+  
   return (
     <div id="tab_forecast" className="tabs_block">
       <div className="name_town_forecast">{cityName}</div>

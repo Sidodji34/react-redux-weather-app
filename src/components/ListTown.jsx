@@ -1,15 +1,14 @@
 import { responseWeather } from '../api';
-import { saveList } from '../storage';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTowns, removeTown } from '../store/actions/listTownsActions';
+import { removeTown } from '../store/actions/listTownsActions';
 import { addWeatherInfo, addForecastInfo } from '../store/actions/weatherActions';
 
 function ListTown() {
   const dispatch = useDispatch();
-  const listTowns = useSelector(state => state.listTowns.listTowns)
+  const listTowns = useSelector(state => state.listTowns.listTowns);
 
   function deliteTown(town) {
-    dispatch(removeTown(town))
+    dispatch(removeTown(town));
   }
 
   function handleSearch(town) {

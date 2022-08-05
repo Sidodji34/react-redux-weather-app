@@ -1,8 +1,6 @@
 import likeImg from '../images/like.svg'
 import { useDispatch, useSelector } from 'react-redux';
-import { saveList } from '../storage';
-import { addTown, removeTown } from '../store/actions/listTownsActions';
-
+import { addTown } from '../store/actions/listTownsActions';
 function TabNow() {
   const dispatch = useDispatch();
   const weather = useSelector(state => state.weather)
@@ -17,7 +15,7 @@ function TabNow() {
 
   function saveTown() {
     const town = weather.cityName;
-    dispatch(addTown(town))
+    dispatch(addTown(town));
   }
   
   return (
