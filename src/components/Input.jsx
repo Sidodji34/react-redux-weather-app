@@ -1,15 +1,15 @@
 import searchImg from '../images/search.svg';
-import { responseWeather } from '../api';
+import { responseWeather } from '../util/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { inputAction, clearInputAction } from '../store/actions/inputActions';
 import { addWeatherInfo, addForecastInfo } from '../store/actions/weatherActions';
 
 function Input() {
   const dispatch = useDispatch();
-  const value = useSelector(state => state.input.value)
+  const value = useSelector(state => state.input.value);
 
   function changeValue(e) {
-    dispatch(inputAction(e.target.value))
+    dispatch(inputAction(e.target.value));
   }
 
   function handleSubmit(e) {
@@ -19,7 +19,7 @@ function Input() {
         dispatch(addWeatherInfo(result[0]))
         dispatch(addForecastInfo(result[1]))
       });
-    dispatch(clearInputAction(value))
+    dispatch(clearInputAction(value));
   }
 
   return (

@@ -1,10 +1,11 @@
 import likeImg from '../images/like.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import { addTown } from '../store/actions/listTownsActions';
+
 function TabNow() {
   const dispatch = useDispatch();
-  const weather = useSelector(state => state.weather)
-  
+  const weather = useSelector(state => state.weather);
+
   let iconWeather = weather.icon;
 
   if (iconWeather) {

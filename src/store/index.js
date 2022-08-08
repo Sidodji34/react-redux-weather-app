@@ -1,4 +1,4 @@
-import { legacy_createStore as createStore, combineReducers} from 'redux'
+import { legacy_createStore as createStore, combineReducers} from 'redux';
 import { weatherReducer } from './reducer/weatherReducer';
 import { inputReducer } from './reducer/inputReducer';
 import { listTownReducer } from './reducer/listTownReducer';

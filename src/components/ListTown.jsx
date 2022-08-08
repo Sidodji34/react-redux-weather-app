@@ -1,4 +1,4 @@
-import { responseWeather } from '../api';
+import { responseWeather } from '../util/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeTown } from '../store/actions/listTownsActions';
 import { addWeatherInfo, addForecastInfo } from '../store/actions/weatherActions';
@@ -27,7 +27,7 @@ function ListTown() {
           <button className="btn__delite" onClick={() => deliteTown(props.favoriteTown)}>x</button>
         </div>
       </li>
-    )
+    );
   }
 
   return (
@@ -49,6 +49,5 @@ function ListTown() {
     </div>
   );
 }
-
 
 export default ListTown;

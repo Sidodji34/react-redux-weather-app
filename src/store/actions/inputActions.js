@@ -1,6 +1,6 @@
 const INPUT = {
     CHANGE_INPUT_VALUE : 'CHANGE_INPUT_VALUE',
-    CLEAR_INPUT : 'CLEAR_INPUT'
+    CLEAR_INPUT : 'CLEAR_INPUT',
 };
 
 export function inputAction(payload) {

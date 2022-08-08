@@ -1,4 +1,4 @@
-import { formatData, formatForecast } from './utilits/formatData';
+import { formatData, formatForecast } from './formatData';
 
 const URL = {
   apiKey: '35cb3bc18d86d923883a89ca2a503caf',

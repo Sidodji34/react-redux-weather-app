@@ -148,7 +148,7 @@ input:focus {
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
-    line-height: 28px;
+    line-height: 26px;
     left: 10px;
     bottom: -20px;
     height: 30px;
@@ -193,11 +193,11 @@ input:focus {
     margin: 0px auto;
 }
 .tabs_block {
-    display: none;
-}
-.tabs_block:target {
     display: block;
 }
+/* .tabs_block:target {
+    display: block;
+} */
 .name_town_details, .name_town_forecast {
     position: relative;
     font-family: 'Roboto';

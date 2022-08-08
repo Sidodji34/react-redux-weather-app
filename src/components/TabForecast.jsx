@@ -3,28 +3,28 @@ import { useSelector } from 'react-redux';
 function TabForecast() {
   const cityName = useSelector(state => state.weather.cityName);
   const forecast = useSelector(state => state.weather.forecast);
-  
+
   return (
     <div id="tab_forecast" className="tabs_block">
       <div className="name_town_forecast">{cityName}</div>
       <div className="forecast_list">
-        { forecast ? forecast.map((items, index) => {
-            return (
-              <HourlyForecast
-                key={index}
-                date={items.date}
-                degrees={items.degrees}
-                feelsLike={items.feelsLike}
-                time={items.time}
-                weatherName={items.weatherName}
-                icon={items.icon} />
-            )
-          })
+        {forecast ? forecast.map((items, index) => {
+          return (
+            <HourlyForecast
+              key={index}
+              date={items.date}
+              degrees={items.degrees}
+              feelsLike={items.feelsLike}
+              time={items.time}
+              weatherName={items.weatherName}
+              icon={items.icon} />
+          )
+        })
           : <div></div>
         }
       </div>
     </div>
-  )
+  );
 }
 
 function HourlyForecast(props) {
@@ -40,7 +40,8 @@ function HourlyForecast(props) {
         <li className="info__weather">{props.weatherName}</li>
         <li className="icon__weather" style={{ backgroundImage: `url(http://openweathermap.org/img/wn/${props.icon}.png)` }}></li>
       </ul>
-    </div>)
+    </div>
+  );
 }
 
 export default TabForecast;
